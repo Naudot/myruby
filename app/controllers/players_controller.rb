@@ -15,6 +15,11 @@ class PlayersController < ApplicationController
 
 	# For each player, we check the players with the same elo
 	@players.each do |player|
+		# Check if the database player is properly set
+		if player.age == nil || player.elo == nil
+			next
+		end
+
 		championSuitors = @championSuitorsHash[player.elo]
 
 		if championSuitors == nil # If there is no one at this ELO yet
@@ -34,7 +39,7 @@ class PlayersController < ApplicationController
 	# We sort the hash by ELO from highest to lowest
 	@championSuitorsHash = @championSuitorsHash.sort.reverse.to_h
 
-	# Second step, we check if they are champions by going through every encounterd ELOs
+	# Second step, we check if they are champions by going through every encounterd ELO
 
 	currentYoungest = Date.parse('01-01-0001')
 	# We save the age of the maximum ELO champion then we compare it when going down in ELO
