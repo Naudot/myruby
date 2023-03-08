@@ -1,0 +1,17 @@
+<h2>Liste des joueurs</h2>
+
+<% @players.each do |player| %>
+	<h3><%= player.name %>, Né(e) le <%= player.age %>, ELO <%= player.elo %> <a href="<%= player_path(player.id) %>" class = "btn">Voir le joueur</a></h3>
+<% end  %>
+
+<h2>Liste des joueurs triés par ELO</h2>
+
+<% @championSuitorsHash.each do |championSuitors| %>
+	<h3><%= championSuitors %></h3>
+<% end  %>
+
+<h2>Liste des Champions</h2>
+
+<% @champions.each do |champion| %>
+	<h3><%= champion %></h3>
+<% end  %>
