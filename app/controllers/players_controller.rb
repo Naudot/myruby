@@ -39,12 +39,12 @@ class PlayersController < ApplicationController
 	# We sort the hash by ELO from highest to lowest
 	@championSuitorsHash = @championSuitorsHash.sort.reverse.to_h
 
-	# Second step, we check if they are champions by going through every encounterd ELO
+	# Second step : We check if players are champions by going through every encounterd ELO
 
 	currentYoungest = Date.parse('01-01-0001')
-	# We save the age of the maximum ELO champion then we compare it when going down in ELO
+	# We save the age of the maximum ELO champion then we compare it when going down in ELOs
 	@championSuitorsHash.keys.each do |championElo|
-		# Because we are going down on ELOs, we only need to check if the best player at the current ELO is younger than the previous champion
+		# Because we are going down in ELOs, we only need to check if the best player at the current ELO is younger than the previous champion
 		if @championSuitorsHash[championElo][0].age > currentYoungest # We check if his birth date is more recent than the previous champion birth date
 			currentYoungest = @championSuitorsHash[championElo][0].age
 			championsAtSameELO = []
