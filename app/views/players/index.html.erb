@@ -1,8 +1,10 @@
 <h2>Liste des joueurs</h2>
 
-<% @players.each do |player| %>
+<% if @players
+	@players.each do |player| %>
 	<h3><%= player.name %>, Né(e) le <%= player.age %>, ELO <%= player.elo %> <a href="<%= player_path(player.id) %>" class = "btn">Voir le joueur</a></h3>
-<% end  %>
+<%	end
+end  %>
 
 <h2>Liste des joueurs triés par ELO</h2>
 
